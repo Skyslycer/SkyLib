@@ -17,7 +17,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly("org.spigotmc:spigot-api:1.19-R0.1-SNAPSHOT")
+    compileOnly("org.spigotmc:spigot-api:1.19.2-R0.1-SNAPSHOT")
     compileOnly("me.clip:placeholderapi:2.11.2")
     implementation("com.github.retrooper.packetevents:spigot:2.0-SNAPSHOT")
     implementation("net.kyori:adventure-api:4.11.0")
