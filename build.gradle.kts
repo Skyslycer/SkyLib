@@ -17,12 +17,12 @@ repositories {
 }
 
 dependencies {
-    compileOnly("org.spigotmc:spigot-api:1.19-R0.1-SNAPSHOT")
-    compileOnly("me.clip:placeholderapi:2.11.1")
+    compileOnly("org.spigotmc:spigot-api:1.19.2-R0.1-SNAPSHOT")
+    compileOnly("me.clip:placeholderapi:2.11.2")
     implementation("com.github.retrooper.packetevents:spigot:2.0-SNAPSHOT")
-    implementation("net.kyori:adventure-api:4.10.0")
+    implementation("net.kyori:adventure-api:4.11.0")
     implementation("net.kyori:adventure-text-minimessage:4.11.0")
-    implementation("net.kyori:adventure-platform-bukkit:4.1.1")
+    implementation("net.kyori:adventure-platform-bukkit:4.1.2")
     implementation("com.tchristofferson:ConfigUpdater:2.0-SNAPSHOT")
     implementation("com.github.Revxrsal.Lamp:common:3.0.71")
     implementation("com.github.Revxrsal.Lamp:bukkit:3.0.71")

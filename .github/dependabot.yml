@@ -2,9 +2,7 @@ version: 2
 updates:
   - package-ecosystem: "gradle"
     directory: "/"
-    assignees:
-      - "Skyslycer"
     labels:
       - "dependabot"
     schedule:
-      interval: "daily"
+      interval: "weekly"
