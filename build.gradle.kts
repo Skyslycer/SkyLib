@@ -46,6 +46,7 @@ java {
 }
 
 license {
+    ignoreFailures.set(false)
     header(rootProject.file("license_header.txt"))
     include("**/*.java")
 }
