@@ -42,11 +42,6 @@ public abstract class SkyPlugin extends JavaPlugin {
 
     @Override
     public void onLoad() {
-        if (data().packets()) {
-            // PacketEvents.setAPI(SpigotPacketEventsBuilder.build(this));
-            // PacketEvents.getAPI().load();
-            // PacketEvents.getAPI().getSettings().checkForUpdates(false);
-        }
         if (data().polymartId() != null) {
             updaters.add(new PolymartPluginUpdater(data().polymartId()));
         }
@@ -58,9 +53,6 @@ public abstract class SkyPlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        if (data().packets()) {
-            // PacketEvents.getAPI().init();
-        }
         if (data().messages() != null) {
             this.handler = new MessageHandler(this, data().messages());
         }
@@ -76,7 +68,6 @@ public abstract class SkyPlugin extends JavaPlugin {
     @Override
     public void onDisable() {
         disable();
-        // PacketEvents.getAPI().terminate();
     }
 
     /**
@@ -143,23 +134,17 @@ public abstract class SkyPlugin extends JavaPlugin {
     /**
      * Action on plugin load.
      */
-    public void load() {
-
-    }
+    public abstract void load();
 
     /**
      * Action on plugin enable.
      */
-    public void enable() {
-
-    }
+    public abstract void enable();
 
     /**
      * Action on plugin disable.
      */
-    public void disable() {
-
-    }
+    public abstract void disable();
 
     /**
      * The plugin data the parent class should use.
@@ -173,8 +158,6 @@ public abstract class SkyPlugin extends JavaPlugin {
      * @param link The link to the resource
      * @param platform The platform
      */
-    public void newUpdate(String version, String link, PluginPlatform platform) {
-
-    }
+    public abstract void newUpdate(String version, String link, PluginPlatform platform);
 
 }

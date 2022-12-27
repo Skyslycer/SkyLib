@@ -26,11 +26,9 @@ public class SkyPluginData {
     private final @Nullable Path messages;
     private final @Nullable Integer polymartId;
     private final @Nullable Integer spigotId;
-    private final boolean packets;
 
-    public SkyPluginData(@Nullable Path messages, boolean packets, @Nullable Integer polymartId, @Nullable Integer spigotId) {
+    public SkyPluginData(@Nullable Path messages, @Nullable Integer polymartId, @Nullable Integer spigotId) {
         this.messages = messages;
-        this.packets = packets;
         this.polymartId = polymartId;
         this.spigotId = spigotId;
     }
@@ -41,14 +39,6 @@ public class SkyPluginData {
      */
     public @Nullable Path messages() {
         return messages;
-    }
-
-    /**
-     * If packets are enabled.
-     * @return Boolean
-     */
-    public boolean packets() {
-        return packets;
     }
 
     /**
@@ -74,7 +64,6 @@ public class SkyPluginData {
         private @Nullable Path messages;
         private @Nullable Integer polymartId;
         private @Nullable Integer spigotId;
-        private boolean packets = true;
 
         /**
          * The path to the message file. Must be ".properties".
@@ -83,16 +72,6 @@ public class SkyPluginData {
          */
         public Builder messages(@Nullable Path messages) {
             this.messages = messages;
-            return this;
-        }
-
-        /**
-         * If packets should be enabled.
-         * @param packets Boolean
-         * @return Current builder
-         */
-        public Builder packets(boolean packets) {
-            this.packets = packets;
             return this;
         }
 
@@ -121,7 +100,7 @@ public class SkyPluginData {
          * @return Built plugin data
          */
         public SkyPluginData build() {
-            return new SkyPluginData(messages, packets, polymartId, spigotId);
+            return new SkyPluginData(messages, polymartId, spigotId);
         }
 
     }

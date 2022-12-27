@@ -2,6 +2,8 @@ plugins {
     java
     `maven-publish`
     id("org.cadixdev.licenser") version "0.6.1"
+    kotlin("jvm") version "1.7.22"
+    id("org.jetbrains.dokka") version ("1.7.20")
 }
 
 group = "de.skyslycer"
@@ -17,17 +19,20 @@ repositories {
 }
 
 dependencies {
-    compileOnly("org.spigotmc:spigot-api:1.19.2-R0.1-SNAPSHOT")
+    compileOnly("org.spigotmc:spigot-api:1.19.3-R0.1-SNAPSHOT")
     compileOnly("me.clip:placeholderapi:2.11.2")
-    implementation("com.github.retrooper.packetevents:spigot:2.0-SNAPSHOT")
-    implementation("net.kyori:adventure-api:4.11.0")
-    implementation("net.kyori:adventure-text-minimessage:4.11.0")
-    implementation("net.kyori:adventure-platform-bukkit:4.1.2")
+    implementation("net.kyori:adventure-api:4.12.0")
+    implementation("net.kyori:adventure-text-minimessage:4.12.0")
+    implementation("net.kyori:adventure-platform-bukkit:4.12.0")
     implementation("com.tchristofferson:ConfigUpdater:2.0-SNAPSHOT")
-    implementation("com.github.Revxrsal.Lamp:common:3.0.71")
-    implementation("com.github.Revxrsal.Lamp:bukkit:3.0.71")
     implementation("org.spongepowered:configurate-yaml:4.1.2") {
         exclude("org.yaml")
+    }
+}
+
+tasks {
+    dokkaHtml {
+        moduleName.set("SkyLib")
     }
 }
 
@@ -55,12 +60,12 @@ publishing {
         maven {
             authentication {
                 credentials(PasswordCredentials::class) {
-                    username = System.getenv("NEXUS_USERNAME")
-                    password = System.getenv("NEXUS_PASSWORD")
+                    username = System.getenv("REPO_USERNAME")
+                    password = System.getenv("REPO_PASSWORD")
                 }
             }
 
-            name = "SkyNexus"
+            name = "Skyslycer"
             url = uri(publishData.getRepository())
         }
     }
@@ -93,9 +98,9 @@ class PublishData(private val project: Project) {
     fun getRepository(): String = type.repo
 
     enum class Type(private val append: String, val repo: String, private val addCommit: Boolean) {
-        RELEASE("", "https://repo.skyslycer.de/repository/maven-releases/", false),
-        DEV("-DEV", "https://repo.skyslycer.de/repository/maven-dev/", true),
-        SNAPSHOT("-SNAPSHOT", "https://repo.skyslycer.de/repository/maven-snapshots/", true);
+        RELEASE("", "https://repo.skyslycer.de/releases/", false),
+        DEV("-DEV", "https://repo.skyslycer.de/snapshots/", true),
+        SNAPSHOT("-SNAPSHOT", "https://repo.skyslycer.de/snapshots/", true);
 
         fun append(name: String, appendCommit: Boolean, commitHash: String): String =
             name.plus(append).plus(if (appendCommit && addCommit) "-".plus(commitHash) else "")
