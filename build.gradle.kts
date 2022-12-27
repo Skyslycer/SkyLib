@@ -41,7 +41,7 @@ tasks {
 }
 
 java {
-    toolchain.languageVersion.set(JavaLanguageVersion.of(16))
+    toolchain.languageVersion.set(JavaLanguageVersion.of(17))
     withSourcesJar()
     withJavadocJar()
 }
@@ -68,7 +68,6 @@ publishing {
                     password = System.getenv("REPO_PASSWORD")
                 }
             }
-
             name = "Skyslycer"
             url = uri(publishData.getRepository())
         }
