@@ -1,2 +1,2 @@
-rootProject.name = "SkyLib"
+rootProject.name = "skylib"
 
