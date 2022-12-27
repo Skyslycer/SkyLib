@@ -142,14 +142,14 @@ public class DefaultActionRegister {
             try {
                 sound = Sound.valueOf(split[0]);
             } catch (IllegalArgumentException ignored) {
-                plugin.getLogger().warning("The sound " + split[0] + " is not a valid sound! Example: ENTITY_VILLAGER_HURT (HMCWraps action configuration)");
+                plugin.getLogger().warning("The sound " + split[0] + " is not a valid sound! Example: ENTITY_VILLAGER_HURT (action configuration)");
             }
             if (split.length == 3) {
                 try {
                     player.playSound(player.getLocation(), sound, Float.parseFloat(split[1]), Float.parseFloat(split[2]));
                     return;
                 } catch (NumberFormatException exception) {
-                    plugin.getLogger().warning("The sound " + split[1] + " or " + split[2] + " is not a valid float number! Example: 1.0 (HMCWraps action configuration)");
+                    plugin.getLogger().warning("The sound " + split[1] + " or " + split[2] + " is not a valid float number! Example: 1.0 (action configuration)");
                 }
             }
             player.playSound(player.getLocation(), sound, 1, 1);
@@ -163,7 +163,10 @@ public class DefaultActionRegister {
             if (checkSplit(split, 4, "title", "0.5 4.0 1.0 message")) return;
             var message = String.join(" ", Arrays.copyOfRange(split, 3, split.length));
             setTitleTimes(player, split);
-            PacketEvents.getAPI().getPlayerManager().sendPacket(player, new WrapperPlayServerSetTitleText(StringUtil.parseComponent(player, parseMessage(information, message))));
+            if (plugin.data().packets()) {
+                PacketEvents.getAPI().getPlayerManager()
+                        .sendPacket(player, new WrapperPlayServerSetTitleText(StringUtil.parseComponent(player, parseMessage(information, message))));
+            }
         }));
     }
 
@@ -174,7 +177,10 @@ public class DefaultActionRegister {
             if (checkSplit(split, 4, "title", "0.5 4.0 1.0")) return;
             var message = String.join(" ", Arrays.copyOfRange(split, 3, split.length));
             setTitleTimes(player, split);
-            PacketEvents.getAPI().getPlayerManager().sendPacket(player, new WrapperPlayServerSetTitleSubtitle(StringUtil.parseComponent(player, parseMessage(information, message))));
+            if (plugin.data().packets()) {
+                PacketEvents.getAPI().getPlayerManager().sendPacket(player,
+                        new WrapperPlayServerSetTitleSubtitle(StringUtil.parseComponent(player, parseMessage(information, message))));
+            }
         }));
     }
 
@@ -187,9 +193,11 @@ public class DefaultActionRegister {
             hold = Math.round(Float.parseFloat(split[1]) * 20);
             fadeOut = Math.round(Float.parseFloat(split[2]) * 20);
         } catch (NumberFormatException exception) {
-            plugin.getLogger().warning("The title duration " + split[0] + " or " + split[1] + " or " + split[2] + " is not a valid float number! Example: 1.0 (HMCWraps action configuration)");
+            plugin.getLogger().warning("The title duration " + split[0] + " or " + split[1] + " or " + split[2] + " is not a valid float number! Example: 1.0 (action configuration)");
         }
-        PacketEvents.getAPI().getPlayerManager().sendPacket(player, new WrapperPlayServerSetTitleTimes(fadeIn, hold, fadeOut));
+        if (plugin.data().packets()) {
+            PacketEvents.getAPI().getPlayerManager().sendPacket(player, new WrapperPlayServerSetTitleTimes(fadeIn, hold, fadeOut));
+        }
     }
 
     private void registerActionBar() {
@@ -208,7 +216,7 @@ public class DefaultActionRegister {
 
     private void registerCommand() {
         plugin.actionHandler().subscribe("COMMAND", (information) -> {
-            if (checkSplit(information.getArguments().split(" "), 1, "command", "say HMCWraps")) return;
+            if (checkSplit(information.getArguments().split(" "), 1, "command", "say I love this plugin!")) return;
             var player = information.getPlayer();
             Bukkit.dispatchCommand(player, parseCommand(information));
         });
