@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "de.skyslycer"
-version = "1.0.11"
+version = "1.1.0"
 
 repositories {
     mavenCentral()
@@ -15,7 +15,9 @@ repositories {
     maven("https://oss.sonatype.org/content/repositories/snapshots/")
     maven("https://oss.sonatype.org/content/groups/public")
     maven("https://repo.extendedclip.com/content/repositories/placeholderapi/")
-    maven("https://jitpack.io")
+    maven("https://repo.skyslycer.de/jitpack")
+    maven("https://repo.bytecode.space/repository/maven-public/")
+    maven("https://repo.codemc.io/repository/maven-snapshots/")
 }
 
 dependencies {
@@ -23,8 +25,10 @@ dependencies {
     compileOnly("me.clip:placeholderapi:2.11.2")
     implementation("net.kyori:adventure-api:4.12.0")
     implementation("net.kyori:adventure-text-minimessage:4.12.0")
-    implementation("net.kyori:adventure-platform-bukkit:4.12.0")
+    implementation("net.kyori:adventure-platform-bukkit:4.2.0")
     implementation("com.tchristofferson:ConfigUpdater:2.0-SNAPSHOT")
+    implementation("com.owen1212055:particlehelper:1.0.0-SNAPSHOT")
+    implementation("com.github.retrooper.packetevents:spigot:2.0.0-SNAPSHOT")
     implementation("org.spongepowered:configurate-yaml:4.1.2") {
         exclude("org.yaml")
     }

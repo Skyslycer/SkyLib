@@ -18,12 +18,15 @@
 
 package de.skyslycer.skylib;
 
+import com.github.retrooper.packetevents.PacketEvents;
 import com.tchristofferson.configupdater.ConfigUpdater;
+import de.skyslycer.skylib.actions.ActionHandler;
 import de.skyslycer.skylib.message.MessageHandler;
 import de.skyslycer.skylib.updater.PluginPlatform;
 import de.skyslycer.skylib.updater.PluginUpdater;
 import de.skyslycer.skylib.updater.PolymartPluginUpdater;
 import de.skyslycer.skylib.updater.SpigotPluginUpdater;
+import io.github.retrooper.packetevents.factory.spigot.SpigotPacketEventsBuilder;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -37,11 +40,17 @@ import org.spongepowered.configurate.yaml.YamlConfigurationLoader;
 
 public abstract class SkyPlugin extends JavaPlugin {
 
-    private @Nullable MessageHandler handler;
+    private @Nullable MessageHandler messageHandler;
+    private @Nullable ActionHandler actionHandler;
     private final List<PluginUpdater> updaters = new ArrayList<>();
 
     @Override
     public void onLoad() {
+        if (data().packets()) {
+            PacketEvents.setAPI(SpigotPacketEventsBuilder.build(this));
+            PacketEvents.getAPI().load();
+            PacketEvents.getAPI().getSettings().checkForUpdates(false);
+        }
         if (data().polymartId() != null) {
             updaters.add(new PolymartPluginUpdater(data().polymartId()));
         }
@@ -53,8 +62,14 @@ public abstract class SkyPlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        if (data().packets()) {
+            PacketEvents.getAPI().init();
+        }
         if (data().messages() != null) {
-            this.handler = new MessageHandler(this, data().messages());
+            this.messageHandler = new MessageHandler(this, data().messages());
+        }
+        if (data().actions()) {
+            this.actionHandler = new ActionHandler();
         }
         Bukkit.getScheduler().runTaskTimerAsynchronously(this, () -> updaters.forEach(updater -> {
             var check = updater.check(this);
@@ -68,6 +83,9 @@ public abstract class SkyPlugin extends JavaPlugin {
     @Override
     public void onDisable() {
         disable();
+        if (data().packets()) {
+            PacketEvents.getAPI().terminate();
+        }
     }
 
     /**
@@ -127,8 +145,16 @@ public abstract class SkyPlugin extends JavaPlugin {
      * Get the current message handler.
      * @return Current message handler
      */
-    public @Nullable MessageHandler handler() {
-        return handler;
+    public @Nullable MessageHandler messageHandler() {
+        return messageHandler;
+    }
+
+    /**
+     * Get the current action handler.
+     * @return Current action handler
+     */
+    public @Nullable ActionHandler actionHandler() {
+        return actionHandler;
     }
 
     /**

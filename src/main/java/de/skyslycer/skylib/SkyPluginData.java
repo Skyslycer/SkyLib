@@ -26,11 +26,15 @@ public class SkyPluginData {
     private final @Nullable Path messages;
     private final @Nullable Integer polymartId;
     private final @Nullable Integer spigotId;
+    private final boolean actions;
+    private final boolean packets;
 
-    public SkyPluginData(@Nullable Path messages, @Nullable Integer polymartId, @Nullable Integer spigotId) {
+    public SkyPluginData(@Nullable Path messages, @Nullable Integer polymartId, @Nullable Integer spigotId, boolean actions, boolean packets) {
         this.messages = messages;
         this.polymartId = polymartId;
         this.spigotId = spigotId;
+        this.actions = actions;
+        this.packets = packets;
     }
 
     /**
@@ -59,11 +63,29 @@ public class SkyPluginData {
         return spigotId;
     }
 
+    /**
+     * Whether actions are enabled.
+     * @return Whether actions are enabled
+     */
+    public boolean actions() {
+        return actions;
+    }
+
+    /**
+     * Whether packets are enabled.
+     * @return Whether packets are enabled
+     */
+    public boolean packets() {
+        return packets;
+    }
+
     public static class Builder {
 
         private @Nullable Path messages;
         private @Nullable Integer polymartId;
         private @Nullable Integer spigotId;
+        private boolean actions = true;
+        private boolean packets = true;
 
         /**
          * The path to the message file. Must be ".properties".
@@ -96,11 +118,29 @@ public class SkyPluginData {
         }
 
         /**
+         * Whether actions are enabled.
+         * @param actions Whether actions are enabled
+         */
+        public Builder actions(boolean actions) {
+            this.actions = actions;
+            return this;
+        }
+
+        /**
+         * Whether packets are enabled.
+         * @param packets Whether packets are enabled
+         */
+        public Builder packets(boolean packets) {
+            this.packets = packets;
+            return this;
+        }
+
+        /**
          * Build the data with the given args.
          * @return Built plugin data
          */
         public SkyPluginData build() {
-            return new SkyPluginData(messages, polymartId, spigotId);
+            return new SkyPluginData(messages, polymartId, spigotId, actions, packets);
         }
 
     }

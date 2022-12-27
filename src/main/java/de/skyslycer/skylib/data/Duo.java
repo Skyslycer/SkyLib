@@ -45,7 +45,7 @@ public class Duo<F, S> {
     }
 
     /**
-     * Build a dou.
+     * Build a duo.
      * @param first First value
      * @param second Second value
      * @param <F> First value type
