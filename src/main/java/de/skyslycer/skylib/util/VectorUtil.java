@@ -21,6 +21,9 @@ package de.skyslycer.skylib.util;
 import com.github.retrooper.packetevents.util.Vector3d;
 import org.bukkit.Location;
 
+/**
+ * Utility class for vectors.
+ */
 public class VectorUtil {
 
     /**

@@ -2,6 +2,9 @@ package de.skyslycer.skylib.actions;
 
 import de.skyslycer.skylib.actions.information.ActionInformation;
 
+/**
+ * This class is used to execute an action.
+ */
 public interface ActionMethod {
 
     /**

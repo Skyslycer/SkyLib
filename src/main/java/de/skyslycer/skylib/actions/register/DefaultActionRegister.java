@@ -31,14 +31,24 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
+/**
+ * This class contains default actions.
+ */
 public class DefaultActionRegister {
 
     private final SkyPlugin plugin;
 
+    /**
+     * Create a new default action register.
+     * @param plugin The plugin
+     */
     public DefaultActionRegister(SkyPlugin plugin) {
         this.plugin = plugin;
     }
 
+    /**
+     * Register the default actions.
+     */
     public void register() {
         registerParticle();
         registerParticleMulti();

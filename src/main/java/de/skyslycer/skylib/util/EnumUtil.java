@@ -21,6 +21,9 @@ package de.skyslycer.skylib.util;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Utility class for enums.
+ */
 public class EnumUtil {
 
     /**

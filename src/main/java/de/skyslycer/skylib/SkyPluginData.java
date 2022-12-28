@@ -21,6 +21,9 @@ package de.skyslycer.skylib;
 import java.nio.file.Path;
 import javax.annotation.Nullable;
 
+/**
+ * Data class for the plugin.
+ */
 public class SkyPluginData {
 
     private final @Nullable Path messages;
@@ -29,6 +32,14 @@ public class SkyPluginData {
     private final boolean actions;
     private final boolean packets;
 
+    /**
+     * Create a new plugin data.
+     * @param messages The path to the messages file, if applicable
+     * @param polymartId The polymart id, if applicable
+     * @param spigotId The spigot id, if applicable
+     * @param actions If the plugin uses actions
+     * @param packets If the plugin uses packets
+     */
     public SkyPluginData(@Nullable Path messages, @Nullable Integer polymartId, @Nullable Integer spigotId, boolean actions, boolean packets) {
         this.messages = messages;
         this.polymartId = polymartId;
@@ -79,6 +90,9 @@ public class SkyPluginData {
         return packets;
     }
 
+    /**
+     * Builder class for the plugin data.
+     */
     public static class Builder {
 
         private @Nullable Path messages;
@@ -120,6 +134,7 @@ public class SkyPluginData {
         /**
          * Whether actions are enabled.
          * @param actions Whether actions are enabled
+         * @return Current builder
          */
         public Builder actions(boolean actions) {
             this.actions = actions;
@@ -129,6 +144,7 @@ public class SkyPluginData {
         /**
          * Whether packets are enabled.
          * @param packets Whether packets are enabled
+         * @return Current builder
          */
         public Builder packets(boolean packets) {
             this.packets = packets;

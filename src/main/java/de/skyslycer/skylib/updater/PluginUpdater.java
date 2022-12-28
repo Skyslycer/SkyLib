@@ -30,14 +30,22 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 
+/**
+ * Utility class for checking plugin versions.
+ */
 public abstract class PluginUpdater {
 
-    public static final HttpClient CLIENT = HttpClient.newHttpClient();
-    public static final Gson GSON = new GsonBuilder().create();
+    private static final HttpClient CLIENT = HttpClient.newHttpClient();
+    private static final Gson GSON = new GsonBuilder().create();
 
     private final int pluginId;
     private final PluginPlatform platform;
 
+    /**
+     * Create a new plugin updater.
+     * @param pluginId The plugin id
+     * @param platform The platform
+     */
     protected PluginUpdater(int pluginId, PluginPlatform platform) {
         this.pluginId = pluginId;
         this.platform = platform;

@@ -2,6 +2,9 @@ package de.skyslycer.skylib.util;
 
 import java.util.stream.IntStream;
 
+/**
+ * Utility class for math.
+ */
 public class MathUtil {
 
     private static final double[] SIN_TABLE = IntStream.rangeClosed(0, 360).mapToDouble(i -> Math.sin(Math.toRadians(i))).toArray();

@@ -20,6 +20,9 @@ package de.skyslycer.skylib.version;
 
 import java.util.regex.Pattern;
 
+/**
+ * Converts and represents a plugin version.
+ */
 public class PluginVersion {
 
     private static final Pattern PATTERN = Pattern.compile("(\\d+)\\.(\\d+)\\.(\\d+).+");
@@ -28,6 +31,12 @@ public class PluginVersion {
     private final int minor;
     private final int patch;
 
+    /**
+     * Create a new plugin version.
+     * @param major The major
+     * @param minor The minor
+     * @param patch The patch
+     */
     public PluginVersion(int major, int minor, int patch) {
         this.major = major;
         this.minor = minor;

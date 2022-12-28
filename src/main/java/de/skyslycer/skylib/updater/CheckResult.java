@@ -18,12 +18,21 @@
 
 package de.skyslycer.skylib.updater;
 
+/**
+ * This class contains information about the result of a version check.
+ */
 public class CheckResult {
 
     private final String version;
     private final String url;
     private final PluginPlatform platform;
 
+    /**
+     * Create a new check result.
+     * @param version The latest version of the plugin.
+     * @param url The url to the resource
+     * @param platform The platform of the resource
+     */
     public CheckResult(String version, String url, PluginPlatform platform) {
         this.version = version;
         this.url = url;

@@ -38,6 +38,9 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.spongepowered.configurate.yaml.YamlConfigurationLoader;
 
+/**
+ * The base class for all plugins using SkyLib.
+ */
 public abstract class SkyPlugin extends JavaPlugin {
 
     private @Nullable MessageHandler messageHandler;
@@ -120,6 +123,7 @@ public abstract class SkyPlugin extends JavaPlugin {
 
     /**
      * Load a configuration file and update it. Destination and jar-included file must have the same name.
+     * @param <T> The configuration file type
      * @param path The path to the file
      * @param clazz The class
      * @param ignoredSections Ignored sections for the updater

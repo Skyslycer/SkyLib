@@ -36,9 +36,19 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.Nullable;
 
+/**
+ * Utility class for strings.
+ */
 public class StringUtil {
 
+    /**
+     * The MiniMessage instance used for parsing messages.
+     */
     public static final MiniMessage MINI_MESSAGE = MiniMessage.builder().tags(StandardTags.defaults()).build();
+
+    /**
+     * The BungeeComponentSerializer instance used for parsing messages.
+     */
     public static final LegacyComponentSerializer LEGACY_SERIALIZER = LegacyComponentSerializer.builder().character('&').hexCharacter('#').hexColors()
             .useUnusualXRepeatedCharacterHexFormat().build();
 
@@ -126,7 +136,7 @@ public class StringUtil {
     }
 
     /**
-     * Convert legacy color codes (&c) to MiniMessage (<red>).
+     * Convert legacy color codes to MiniMessage.
      * If the string contains legacy color codes, other MiniMessage tags won't work.
      * @param legacy The string containing legacy color codes
      * @return The string with MiniMessage color codes

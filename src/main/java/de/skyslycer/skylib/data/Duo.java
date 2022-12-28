@@ -18,11 +18,21 @@
 
 package de.skyslycer.skylib.data;
 
+/**
+ * A mapper for two values.
+ * @param <F> The first value
+ * @param <S> The second value
+ */
 public class Duo<F, S> {
 
     private final F first;
     private final S second;
 
+    /**
+     * Create a new duo.
+     * @param first The first value
+     * @param second The second value
+     */
     public Duo(F first, S second) {
         this.first = first;
         this.second = second;

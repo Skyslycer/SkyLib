@@ -18,12 +18,24 @@
 
 package de.skyslycer.skylib.data;
 
+/**
+ * A data class for three values.
+ * @param <F> The first value
+ * @param <S> The second value
+ * @param <T> The third value
+ */
 public class Trio<F, S, T> {
 
     private final F first;
     private final S second;
     private final T third;
 
+    /**
+     * Create a new trio.
+     * @param first The first value
+     * @param second The second value
+     * @param third The third value
+     */
     public Trio(F first, S second, T third) {
         this.first = first;
         this.second = second;

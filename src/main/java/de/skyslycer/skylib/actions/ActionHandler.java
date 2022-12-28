@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import org.bukkit.Bukkit;
 
+/**
+ * This class handles all actions.
+ */
 public class ActionHandler {
 
     private final HashMap<String, ActionMethod> actions = new HashMap<>();

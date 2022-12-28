@@ -23,13 +23,13 @@ repositories {
 dependencies {
     compileOnly("org.spigotmc:spigot-api:1.19.3-R0.1-SNAPSHOT")
     compileOnly("me.clip:placeholderapi:2.11.2")
-    implementation("net.kyori:adventure-api:4.12.0")
-    implementation("net.kyori:adventure-text-minimessage:4.12.0")
-    implementation("net.kyori:adventure-platform-bukkit:4.2.0")
-    implementation("com.tchristofferson:ConfigUpdater:2.0-SNAPSHOT")
-    implementation("com.owen1212055:particlehelper:1.0.0-SNAPSHOT")
-    implementation("com.github.retrooper.packetevents:spigot:2.0.0-SNAPSHOT")
-    implementation("org.spongepowered:configurate-yaml:4.1.2") {
+    compileOnly("net.kyori:adventure-api:4.12.0")
+    compileOnly("net.kyori:adventure-text-minimessage:4.12.0")
+    compileOnly("net.kyori:adventure-platform-bukkit:4.2.0")
+    compileOnly("com.tchristofferson:ConfigUpdater:2.0-SNAPSHOT")
+    compileOnly("com.owen1212055:particlehelper:1.0.0-SNAPSHOT")
+    compileOnly("com.github.retrooper.packetevents:spigot:2.0.0-SNAPSHOT")
+    compileOnly("org.spongepowered:configurate-yaml:4.1.2") {
         exclude("org.yaml")
     }
 }
@@ -43,6 +43,7 @@ tasks {
 java {
     toolchain.languageVersion.set(JavaLanguageVersion.of(17))
     withSourcesJar()
+    withJavadocJar()
 }
 
 license {

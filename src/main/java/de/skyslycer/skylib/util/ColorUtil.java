@@ -2,6 +2,9 @@ package de.skyslycer.skylib.util;
 
 import org.bukkit.Color;
 
+/**
+ * Utility class for colors.
+ */
 public class ColorUtil {
 
     /**
