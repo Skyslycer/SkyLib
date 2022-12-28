@@ -31,6 +31,9 @@ import java.util.PropertyResourceBundle;
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver.Single;
 import org.bukkit.command.CommandSender;
 
+/**
+ * A message handler for loading messages.
+ */
 public class MessageHandler {
 
     private final SkyPlugin plugin;
@@ -38,6 +41,11 @@ public class MessageHandler {
     private PropertyResourceBundle bundle;
     private PropertyResourceBundle fallback;
 
+    /**
+     * Create a new message handler.
+     * @param plugin The plugin
+     * @param path The path to the messages file
+     */
     public MessageHandler(SkyPlugin plugin, Path path) {
         this.plugin = plugin;
         this.path = path;
