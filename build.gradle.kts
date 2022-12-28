@@ -1,7 +1,6 @@
 plugins {
     java
     `maven-publish`
-    id("org.cadixdev.licenser") version "0.6.1"
     kotlin("jvm") version "1.7.22"
     id("org.jetbrains.dokka") version ("1.7.20")
 }
@@ -44,12 +43,6 @@ java {
     toolchain.languageVersion.set(JavaLanguageVersion.of(17))
     withSourcesJar()
     withJavadocJar()
-}
-
-license {
-    ignoreFailures.set(true)
-    header(rootProject.file("license_header.txt"))
-    include("**/*.java")
 }
 
 publishing {
