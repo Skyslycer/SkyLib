@@ -80,11 +80,11 @@ public class MessageHandler {
      * @param key The message key
      * @return The message string
      */
-    public String get(Message key) {
-        if (bundle.containsKey(key.getKey())) {
-            return bundle.getString(key.getKey());
-        } else if (fallback.containsKey(key.getKey())) {
-            return fallback.getString(key.getKey());
+    public String get(String key) {
+        if (bundle.containsKey(key)) {
+            return bundle.getString(key);
+        } else if (fallback.containsKey(key)) {
+            return fallback.getString(key);
         } else {
             return "Invalid key: " + key;
         }
@@ -120,7 +120,7 @@ public class MessageHandler {
      * @param key The message key
      * @param placeholders The placeholders
      */
-    public void send(CommandSender sender, Message key, Single... placeholders) {
+    public void send(CommandSender sender, String key, Single... placeholders) {
         StringUtil.send(sender, get(key), placeholders);
     }
 
