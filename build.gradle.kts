@@ -28,9 +28,8 @@ dependencies {
     compileOnly("com.tchristofferson:ConfigUpdater:2.0-SNAPSHOT")
     compileOnly("com.owen1212055:particlehelper:1.0.0-SNAPSHOT")
     compileOnly("com.github.retrooper.packetevents:spigot:2.0.0-SNAPSHOT")
-    compileOnly("org.spongepowered:configurate-yaml:4.1.2") {
-        exclude("org.yaml")
-    }
+    compileOnly("org.spongepowered:configurate-yaml:4.1.2")
+    dokkaHtmlPlugin("org.jetbrains.dokka:kotlin-as-java-plugin:1.7.20")
 }
 
 tasks {
