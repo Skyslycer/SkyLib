@@ -26,7 +26,7 @@ dependencies {
 ### Gradle Kotlin
 ```kotlin
 repositories {
-    implementation("https://repo.skyslycer.de/releases")
+    maven("https://repo.skyslycer.de/releases")
 }
 
 dependencies {
