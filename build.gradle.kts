@@ -29,7 +29,7 @@ dependencies {
     compileOnly("com.owen1212055:particlehelper:1.0.0-SNAPSHOT")
     compileOnly("com.github.retrooper.packetevents:spigot:2.0.0-SNAPSHOT")
     compileOnly("org.spongepowered:configurate-yaml:4.1.2")
-    dokkaHtmlPlugin("org.jetbrains.dokka:kotlin-as-java-plugin:1.7.20")
+    dokkaHtmlPlugin("org.jetbrains.dokka:kotlin-as-java-plugin:1.8.10")
 }
 
 tasks {
