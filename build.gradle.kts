@@ -26,7 +26,7 @@ dependencies {
     compileOnly("net.kyori:adventure-text-minimessage:4.12.0")
     compileOnly("net.kyori:adventure-platform-bukkit:4.2.0")
     compileOnly("com.tchristofferson:ConfigUpdater:2.0-SNAPSHOT")
-    compileOnly("com.owen1212055:particlehelper:1.0.0-SNAPSHOT")
+    compileOnly("com.owen1212055:particlehelper:1.3.0-SNAPSHOT")
     compileOnly("com.github.retrooper.packetevents:spigot:2.0.0-SNAPSHOT")
     compileOnly("org.spongepowered:configurate-yaml:4.1.2")
     dokkaHtmlPlugin("org.jetbrains.dokka:kotlin-as-java-plugin:1.7.20")
